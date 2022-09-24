@@ -160,7 +160,8 @@ export default function Form({ sharePage }: Props) {
       })}
       onSubmit={onSubmit}
     >
-      <div className={styles['form-row']}>
+      {
+      /* <div className={styles['form-row']}>
         <label
           htmlFor="email-input-field"
           className={cn(styles['input-label'], {
@@ -189,7 +190,7 @@ export default function Form({ sharePage }: Props) {
           {formState === 'loading' ? <LoadingDots size={4} /> : <>Register</>}
         </button>
       </div>
-      <Captcha ref={captchaRef} onVerify={handleRegister} />
+      <Captcha ref={captchaRef} onVerify={handleRegister} /> */}
     </form>
   );
 }

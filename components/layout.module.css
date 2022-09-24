@@ -15,8 +15,9 @@
  */
 
 .background {
-  background: #000;
-  color: #fff;
+  background: url(https://cdn.discordapp.com/attachments/1023047250802384906/1023088394684878878/Untitled_Artwork.jpg) no-repeat center center fixed;
+  background-size: cover;
+  color: RGB(78,53,36);
   min-height: 100vh;
   min-height: var(--100vh);
   display: flex;
@@ -45,8 +46,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--sidebar);
-  border-bottom: 1px solid var(--accents-7);
   height: var(--header-height);
   z-index: 2;
 }

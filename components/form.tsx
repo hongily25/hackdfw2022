@@ -213,7 +213,7 @@ export default function Form({ sharePage }: Props) {
           disabled={formState === 'loading'}
         >
           {/* {formState === 'loading' ? <LoadingDots size={4} /> : <>Login</>} */}
-          <a href="/stages" rel="noopener noreferrer">
+          <a href="/schedule" rel="noopener noreferrer">
           Login
           </a>
         </button>

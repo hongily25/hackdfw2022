@@ -54,7 +54,7 @@ export const NAVIGATION = [
   },
   {
     name: 'Company',
-    route: '/schedule'
+    route: '/company'
   },
   {
     name: 'Privacy',

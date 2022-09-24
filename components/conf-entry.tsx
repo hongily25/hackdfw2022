@@ -52,12 +52,12 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
     async (token?: string) => {
       const res = await register(emailInput, token);
 
-      if (!res.ok) {
-        const json = await res.json();
-        setErrorMsg(getErrorMsg(json.error.code));
-        setFormState('error');
-        return;
-      }
+      // if (!res.ok) {
+      //   const json = await res.json();
+      //   setErrorMsg(getErrorMsg(json.error.code));
+      //   setFormState('error');
+      //   return;
+      // }
 
       onRegister();
     },
@@ -142,7 +142,7 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
             )}
           </button>
         </div>
-        <Captcha ref={captchaRef} onVerify={handleRegister} />
+        {/* <Captcha ref={captchaRef} onVerify={handleRegister} /> */}
       </form>
     </div>
   );

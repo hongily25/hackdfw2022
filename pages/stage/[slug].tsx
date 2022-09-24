@@ -65,10 +65,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const stages = await getAllStages();
-  const slugs = stages.map((s: Stage) => ({ params: { slug: s.slug } }));
+  // const slugs = stages.map((s: Stage) => ({ params: { slug: s.slug } }));
 
   return {
-    paths: slugs,
+    paths: [{ params: { slug: 'blah' } }],
     fallback: false
   };
 };

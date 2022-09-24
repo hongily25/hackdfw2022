@@ -34,9 +34,11 @@ type Props = {
 
 export default function Form({ sharePage }: Props) {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [errorTryAgain, setErrorTryAgain] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [pwFocused, setPwFocused] = useState(false);
   const [formState, setFormState] = useState<FormState>('default');
   const { setPageState, setUserData } = useConfData();
   const router = useRouter();
@@ -81,19 +83,19 @@ export default function Form({ sharePage }: Props) {
         .catch(async err => {
           let message = 'Error! Please try again.';
 
-          if (err instanceof FormError) {
-            const { res } = err;
-            const data = res.headers.get('Content-Type')?.includes('application/json')
-              ? await res.json()
-              : null;
+          // if (err instanceof FormError) {
+          //   const { res } = err;
+          //   const data = res.headers.get('Content-Type')?.includes('application/json')
+          //     ? await res.json()
+          //     : null;
 
-            if (data?.error?.code === 'bad_email') {
-              message = 'Please enter a valid email';
-            }
-          }
+          //   if (data?.error?.code === 'bad_email') {
+          //     message = 'Please enter a valid email';
+          //   }
+          // }
 
-          setErrorMsg(message);
-          setFormState('error');
+          // setErrorMsg(message);
+          setFormState('default');
         });
     },
     [email, router, setPageState, setUserData, sharePage]
@@ -106,9 +108,9 @@ export default function Form({ sharePage }: Props) {
       if (formState === 'default') {
         setFormState('loading');
 
-        if (isCaptchaEnabled) {
-          return executeCaptcha();
-        }
+        // if (isCaptchaEnabled) {
+        //   return executeCaptcha();
+        // }
 
         return handleRegister();
       } else {
@@ -160,8 +162,7 @@ export default function Form({ sharePage }: Props) {
       })}
       onSubmit={onSubmit}
     >
-      {
-      /* <div className={styles['form-row']}>
+      <div className={styles['form-row']}>
         <label
           htmlFor="email-input-field"
           className={cn(styles['input-label'], {
@@ -171,26 +172,55 @@ export default function Form({ sharePage }: Props) {
           <input
             className={styles.input}
             autoComplete="off"
-            type="email"
             id="email-input-field"
             value={email}
             onChange={e => setEmail(e.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            placeholder="Enter email to register free"
-            aria-label="Your email address"
+            placeholder="Username"
+            aria-label="Your username"
             required
           />
         </label>
+      </div>
+      <div className={styles['form-row']}>
+        <label
+          htmlFor="email-input-field"
+          className={cn(styles['input-label'], {
+            [styles.focused]: focused
+          })}
+        >
+          <input
+            className={styles.input}
+            autoComplete="off"
+            type="password"
+            id="email-input-field"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            onFocus={() => setPwFocused(true)}
+            onBlur={() => setPwFocused(false)}
+            placeholder="Password"
+            aria-label="Your username"
+            required
+          />
+        </label>      
+      </div>
+      <div className={cn(styles['form-row'], styles['submit-form-row'])}>
         <button
           type="submit"
           className={cn(styles.submit, styles.register, styles[formState])}
           disabled={formState === 'loading'}
         >
-          {formState === 'loading' ? <LoadingDots size={4} /> : <>Register</>}
+          {/* {formState === 'loading' ? <LoadingDots size={4} /> : <>Login</>} */}
+          <a href="/stages" rel="noopener noreferrer">
+          Login
+          </a>
         </button>
+        <a href="https://vercel.com" className={styles['register-href']} target="_blank" rel="noopener noreferrer">
+          Register
+        </a>
       </div>
-      <Captcha ref={captchaRef} onVerify={handleRegister} /> */}
+      <Captcha ref={captchaRef} onVerify={handleRegister} />
     </form>
   );
 }

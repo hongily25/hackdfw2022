@@ -65,7 +65,7 @@
   --gray1: #222222;
   --error: #ea3323;
 
-  --foreground: #fff;
+  --foreground: rgb(253,248,247);
 
   --header-height: 72px;
   --video-list-height: 150px;

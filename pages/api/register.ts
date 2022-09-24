@@ -47,14 +47,14 @@ export default async function register(
 
   const email: string = ((req.body.email as string) || '').trim().toLowerCase();
   const token: string = req.body.token as string;
-  if (!validator.isEmail(email)) {
-    return res.status(400).json({
-      error: {
-        code: 'bad_email',
-        message: 'Invalid email'
-      }
-    });
-  }
+  // if (!validator.isEmail(email)) {
+  //   return res.status(400).json({
+  //     error: {
+  //       code: 'bad_email',
+  //       message: 'Invalid email'
+  //     }
+  //   });
+  // }
 
   if (IS_CAPTCHA_ENABLED) {
     const isCaptchaValid = await validateCaptchaResult(token);

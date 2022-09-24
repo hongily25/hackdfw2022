@@ -81,21 +81,21 @@ export default function Form({ sharePage }: Props) {
           }
         })
         .catch(async err => {
-          const message = 'Error! Please try again.';
-          await null;
+          let message = 'Error! Please try again.';
 
-          // if (err instanceof FormError) {
-          //   const { res } = err;
-          //   const data = res.headers.get('Content-Type')?.includes('application/json')
-          //     ? await res.json()
-          //     : null;
 
-          //   if (data?.error?.code === 'bad_email') {
-          //     message = 'Please enter a valid email';
-          //   }
-          // }
+          if (err instanceof FormError) {
+            const { res } = err;
+            const data = res.headers.get('Content-Type')?.includes('application/json')
+              ? await res.json()
+              : null;
 
-          // setErrorMsg(message);
+            if (data?.error?.code === 'bad_email') {
+              message = 'Please enter a valid email';
+            }
+          }
+
+          setErrorMsg(message);
           setFormState('default');
         });
     },

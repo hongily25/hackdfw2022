@@ -213,7 +213,7 @@ export default function Form({ sharePage }: Props) {
           disabled={formState === 'loading'}
         >
           {/* {formState === 'loading' ? <LoadingDots size={4} /> : <>Login</>} */}
-          <a href="/schedule" rel="noopener noreferrer">
+          <a href="https://react-webrtc-chat-ens9.vercel.app/" target="_blank" rel="noopener noreferrer">
           Login
           </a>
         </button>

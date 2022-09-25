@@ -48,16 +48,6 @@ export default function SchedulePage({ allStages }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const allStages: Stage[] = [];
-  const scopes = 'OnlineMeetings.ReadWrite.All';
-  const tenantId = '65cc8599-055a-4d70-a739-1417596f235c';
-  const clientId = '5caecbe0-b118-4df9-a7ee-d12f5a493a29';
-  const clientSecret = 'JZG8Q~ZhIrfG-nCsT8ar.se4yisI0QKz_pEkLapv';
-
-  if (typeof window !== "undefined") {
-    let navigator: any;
-
-    navigator = window.navigator;
-  }
 
   return {
     props: {

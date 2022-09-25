@@ -47,7 +47,7 @@ export default function SchedulePage({ allStages }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const allStages: Stage[] = [];
+  const allStages: Stage[] = await getAllStages();
 
   return {
     props: {
